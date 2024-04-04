@@ -12,6 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
+
+    # You can add or change these user later
+    # Default user role : username = user   |  password = user 
+    # Default admin role : username = admin   |  password = admin 
+
     
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
@@ -30,4 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 }
+
+
 ?>
